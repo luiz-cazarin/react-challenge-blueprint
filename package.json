@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^4.14.1",
+    "@blueprintjs/select": "^4.8.14",
+    "@blueprintjs/table": "^4.7.12",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

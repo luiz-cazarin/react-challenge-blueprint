@@ -1,56 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import * as React from 'react';
+import { Navigation } from './components/UI/Navigation';
 import './App.css';
-
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className='App'>
+      <div style={{ display: 'flex', height: '100%' }}>
+        <div style={{ height: '100%' }}>
+          <Navigation />
+        </div>
+        <div style={{ height: '100%', width: '100%' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-around', height: '50px', backgroundColor: '#EBF1F5' }}>
+            <input placeholder='(icon) Search (10 alerts)'></input>
+            <button>List</button>
+            <button>Group by Trader - drop dow</button>
+            <button>Take action</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
