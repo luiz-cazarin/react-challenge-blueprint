@@ -6,7 +6,6 @@ import {
   Navbar,
   NavbarGroup,
   NavbarHeading,
-  Button
 } from "@blueprintjs/core";
 
 export interface NavigationProps { }
