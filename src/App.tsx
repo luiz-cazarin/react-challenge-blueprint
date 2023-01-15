@@ -64,8 +64,8 @@ function App() {
               <thead className='header__row'>
                 <tr>
                   <th><Text>TITLE</Text></th>
-                  <th>
-                    <Button icon="arrow-down" color='blue' minimal></Button>
+                  <th style={{ textAlign: "center" }}>
+                    <Button className='bp4-intent-primary' icon="issue" minimal></Button>
                   </th>
                   <th><Text>STATUS</Text></th>
                   <th><Text>TRADER</Text></th>
@@ -80,10 +80,10 @@ function App() {
                     return (
                       <tr>
                         <td style={{ width: "300px" }}>{el.title}</td>
-                        <td>
-                          <div style={{ height: "20px", width: "20px", margin: "auto", borderRadius: "3px", backgroundColor: `${getDanger(el.danger)}` }}></div>
+                        <td style={{ width: "20px" }} >
+                          <div style={{ height: "20px", textAlign: "center", width: "20px", borderRadius: "3px", backgroundColor: `${getDanger(el.danger)}` }}></div>
                         </td>
-                        <td>
+                        <td style={{ width: "120px" }}>
                           <div style={{ border: "1px solid rgb(209, 209, 209)", fontSize: "10px", textAlign: "center", padding: ".3rem 1rem", borderRadius: "5px" }}>
                             {el.status.toUpperCase()}
                           </div>

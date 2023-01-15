@@ -10,13 +10,14 @@
 
 .table {
   border-collapse: collapse;
+  width: 100%;
 }
 
-.header__row tr th{
+.header__row tr th {
   text-align: left;
   width: auto;
   height: 35px;
-  border-bottom: 1px solid rgb(209, 209, 209);
+  border-bottom: 1px solid #D8D8DA;
   padding: 0rem .5rem;
 }
 
@@ -29,10 +30,9 @@
   background-color: rgb(255, 255, 255);
 }
 
-.body {
-}
+.body {}
 
-.body tr td{
+.body tr td {
   padding: 1rem;
-  border-bottom: 1px solid rgb(209, 209, 209);
+  border-bottom: 1px solid #D8D8DA;
 }

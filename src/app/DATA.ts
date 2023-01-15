@@ -13,7 +13,7 @@ export const data = [
         id: 2,
         title: "Sell of $34.0M",
         danger: 1,
-        status: "closed",
+        status: "escalated",
         trader: "Hugo justice",
         couterParty: "VALE corp 2",
         book: "phhi-z53",
