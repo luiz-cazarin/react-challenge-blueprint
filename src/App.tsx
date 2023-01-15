@@ -8,12 +8,6 @@ import {
   Text
 } from "@blueprintjs/core";
 
-import {
-  Table2,
-  Cell,
-  Column,
-} from "@blueprintjs/table"
-
 import { data } from './app/DATA'
 import './App.css';
 

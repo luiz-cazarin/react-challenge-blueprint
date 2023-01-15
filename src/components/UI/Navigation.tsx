@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Alignment,
   AnchorButton,
@@ -7,17 +7,40 @@ import {
   Navbar,
   NavbarGroup,
   NavbarHeading,
-  Icon
+  Icon,
+  Menu,
+  MenuItem
 } from "@blueprintjs/core";
 
 export interface NavigationProps { }
 
 export const Navigation: React.FC<NavigationProps> = () => {
+  const [menuItems] = useState([
+    {
+      text: "Status",
+      children: [
+        {
+          text: "Close",
+        },
+        {
+          text: "Open"
+        },
+        {
+          text: "Escalated"
+        }
+      ]
+    },
+    { text: "Circle" },
+    { text: "Grid" },
+    { text: "History" },
+    { text: "Favorites" },
+    { text: "Messages" },
+  ]);
   return (
     <>
       <Navbar className={Classes.DARK} style={{ minWidth: '300px' }}>
         <NavbarGroup align={Alignment.LEFT}>
-          <Icon icon="circle" size={22} style={{ paddingRight: "1rem"}}></Icon>
+          <Icon icon="circle" size={22} style={{ paddingRight: "1rem" }}></Icon>
           <NavbarHeading style={{ fontWeight: "600" }}>RADAR</NavbarHeading>
         </NavbarGroup>
         <NavbarGroup align={Alignment.RIGHT}>
@@ -37,33 +60,36 @@ export const Navigation: React.FC<NavigationProps> = () => {
             icon="help"
           />
         </NavbarGroup>
-        <NavbarGroup>
-          <Button icon="caret-left" minimal />
-          <NavbarHeading style={{ fontWeight: "600" }}>OPEN FLAGS</NavbarHeading>
+      </Navbar>
+      <Navbar className={Classes.DARK} style={{ minWidth: '300px' }}>
+        <NavbarGroup className="bp4-dark">
+          <Button icon="caret-left" text="Sets" minimal />
+          <NavbarHeading style={{ fontWeight: "600", paddingLeft: "2rem" }}>OPEN FLAGS</NavbarHeading>
         </NavbarGroup>
       </Navbar>
-      <div style={{ height: '100%' }}>
-        <ul className="bp4-menu bp4-elevation-1" style={{ height: '100%' }}>
-          <li>
-            <Button minimal className="bp4-menu-item">Status</Button>
-          </li>
-          <li>
-            <Button minimal className="bp4-menu-item">Circle</Button>
-          </li>
-          <li>
-            <Button minimal className="bp4-menu-item">Grid</Button>
-          </li>
-          <li>
-            <Button minimal className="bp4-menu-item">History</Button>
-          </li>
-          <li>
-            <Button minimal className="bp4-menu-item">Favorites</Button>
-          </li>
-          <li>
-            <Button minimal className="bp4-menu-item">Messages</Button>
-          </li>
-        </ul>
-      </div>
+      <Menu>
+        {
+          menuItems.map((el) => {
+            return (
+              <MenuItem
+                text={el.text}
+                children={
+                  el.children ? (
+                    <>
+                      {el.children?.map((children) => {
+                        return (
+                          <Button minimal text={children.text} />
+                        )
+                      })
+                      }
+                    </>
+                  ) : undefined
+                }
+              />
+            )
+          })
+        }
+      </Menu>
     </>
   );
 };
