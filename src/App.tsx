@@ -21,50 +21,14 @@ function App() {
 
   const [getData, setData] = useState(data);
 
-
-  // const getCellRender = (key: string) => {
-  //   return (row: number) =>
-  //     <Cell interactive={true} style={{ backgroundColor: "#ffffff" }}> {data[row].title}</Cell>
-  // }
-  const getCellRenderTitle = (key: string) => {
-    return (row: number) =>
-      <Cell interactive={true} style={{ backgroundColor: "#ffffff" }}> {data[row].title}</Cell>
-  }
-  const getCellRenderDanger = (key: string) => {
-    return (row: number) =>
-      <Cell interactive={true} truncated={true} style={{ backgroundColor: "#ffffff" }}>
-        <div>
-          {/* {data[row].danger} */}
-          <div style={{ backgroundColor: `${data[row].danger === 3 ? 'red' : 'gray'}`, width: "30px", height: "30px", padding: "1rem", borderRadius: "10px" }}>
-          </div>
-        </div>
-      </Cell>
-  }
-  const getCellRenderStatus = (key: string) => {
-    return (row: number) =>
-      <Cell interactive={true} style={{ backgroundColor: "#ffffff" }}> {data[row].status}</Cell>
-  }
-  const getCellRenderTrader = (key: string) => {
-    return (row: number) =>
-      <Cell interactive={true} style={{ backgroundColor: "#ffffff" }}> {data[row].trader}</Cell>
-  }
-  const getCellRenderCounterParty = (key: string) => {
-    return (row: number) =>
-      <Cell interactive={true} style={{ backgroundColor: "#ffffff" }}> {data[row].couterParty}</Cell>
-  }
-  const getCellRenderBook = (key: string) => {
-    return (row: number) =>
-      <Cell interactive={true} style={{ backgroundColor: "#ffffff" }}> {data[row].book}</Cell>
-  }
-  const getCellRenderSource = (key: string) => {
-    return (row: number) =>
-      <Cell interactive={true} style={{ backgroundColor: "#ffffff" }}> {data[row].source}</Cell>
+  const getDanger = (level: number) => {
+    if (level === 0) return "#d1d1d1"
+    if (level === 1) return "#ee8104"
+    if (level === 2) return "#f50404"
   }
 
-  const getDanger = (nivel: number) => {
-    if (nivel === 0) return "#d1d1d1"
-    if (nivel === 1) return "#ee8104"
-    if (nivel === 2) return "#f50404"
+  const filterTitle = (event: { target: HTMLInputElement }) => {
+    setData(data.filter((el) => el.title.toLowerCase().includes(event.target.value.toLowerCase())))
   }
 
   return (
@@ -75,12 +39,13 @@ function App() {
         </div>
         <div style={{ height: '100%', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', height: '50px', backgroundColor: '#EBF1F5' }}>
-            <div style={{ padding: "20px" }}>
+            <div style={{ paddingLeft: "20px" }}>
               <InputGroup
                 round
                 leftElement={<Icon icon="search" />}
                 placeholder="Search for Alerts..."
                 rightElement={<div style={{ backgroundColor: "#eeeeee", color: "#a8a8a8", fontSize: "12px", borderRadius: "10px", padding: "3px", marginTop: "4px", marginRight: "4px" }}> 100 </div>}
+                onChange={filterTitle}
               />
             </div>
             <Button
@@ -100,17 +65,8 @@ function App() {
               />
             </div>
           </div>
-          <div style={{ padding: ".1rem", height: "100%", width: "100%" }}>
-            {/* <Table2 numRows={data.length} enableRowHeader={false}>
-              <Column className='column' name='Title' cellRenderer={getCellRenderTitle("title")} />
-              <Column className='column' name='Danger' cellRenderer={getCellRenderDanger("danger")} />
-              <Column className='column' name='Status' cellRenderer={getCellRenderStatus("status")} />
-              <Column className='column' name='Trader' cellRenderer={getCellRenderTrader("trader")} />
-              <Column className='column' name='Counter-Party' cellRenderer={getCellRenderCounterParty("couterParty")} />
-              <Column className='column' name='Book' cellRenderer={getCellRenderBook("book")} />
-              <Column className='column' name='Source' cellRenderer={getCellRenderSource("source")} />
-            </Table2> */}
-            <table>
+          <div style={{ padding: ".2rem", height: "100%", width: "100%" }}>
+            <table className='table'>
               <thead className='header__row'>
                 <tr>
                   <th><Text>TITLE</Text></th>
@@ -134,7 +90,7 @@ function App() {
                           <div style={{ height: "20px", width: "20px", margin: "auto", borderRadius: "3px", backgroundColor: `${getDanger(el.danger)}` }}></div>
                         </td>
                         <td>
-                          <div style={{ border: "1px solid rgb(209, 209, 209)", fontSize: "10px", textAlign: "center", padding: ".3rem 1rem", borderRadius: "5px"}}>
+                          <div style={{ border: "1px solid rgb(209, 209, 209)", fontSize: "10px", textAlign: "center", padding: ".3rem 1rem", borderRadius: "5px" }}>
                             {el.status.toUpperCase()}
                           </div>
                         </td>

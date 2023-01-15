@@ -41,7 +41,7 @@ export const data = [
     },
     {
         id: 5,
-        title: "Sell of $34.0M",
+        title: "Sell of $33.0M",
         danger: 0,
         status: "closed",
         trader: "Hugo justice",
@@ -61,7 +61,7 @@ export const data = [
     },
     {
         id: 7,
-        title: "Sell of $34.0M",
+        title: "Sell of $35.0M",
         danger: 0,
         status: "closed",
         trader: "Hugo justice",
@@ -71,7 +71,7 @@ export const data = [
     },
     {
         id: 8,
-        title: "Sell of $34.0M",
+        title: "Sell of $24.0M",
         danger: 2,
         status: "closed",
         trader: "Hugo justice",

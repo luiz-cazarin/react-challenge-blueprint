@@ -8,6 +8,10 @@
   background-color: white;
 }
 
+.table {
+  border-collapse: collapse;
+}
+
 .header__row tr th{
   text-align: left;
   width: auto;
