@@ -9,33 +9,32 @@ import {
   NavbarHeading,
   Icon,
   Menu,
-  MenuItem
+  MenuItem,
+  InputGroup
 } from "@blueprintjs/core";
 
 export interface NavigationProps { }
 
 export const Navigation: React.FC<NavigationProps> = () => {
-  const [menuItems] = useState([
-    {
-      text: "Status",
-      children: [
-        {
-          text: "Close",
-        },
-        {
-          text: "Open"
-        },
-        {
-          text: "Escalated"
-        }
-      ]
-    },
-    { text: "Circle" },
-    { text: "Grid" },
-    { text: "History" },
-    { text: "Favorites" },
-    { text: "Messages" },
-  ]);
+  const currMenuItems = [{
+    text: "Status",
+    children: [
+      { text: "Close" },
+      { text: "Open" },
+      { text: "Escalated" }
+    ]
+  },
+  { text: "Circle" },
+  { text: "Grid" },
+  { text: "History" },
+  { text: "Favorites" },
+  { text: "Messages" },]
+
+  const [menuItems, setMenuItems] = useState(currMenuItems);
+
+  const handleInputProperties = (value: { target: HTMLInputElement }) => {
+    setMenuItems(currMenuItems.filter((el) => el.text.toLowerCase().includes(value.target.value.toLowerCase())))
+  }
   return (
     <>
       <div style={{ backgroundColor: '#30404D', height: "100%" }}>
@@ -68,7 +67,8 @@ export const Navigation: React.FC<NavigationProps> = () => {
             <NavbarHeading style={{ fontWeight: "600", paddingLeft: "2rem" }}>OPEN FLAGS</NavbarHeading>
           </NavbarGroup>
         </Navbar>
-        <Menu style={{ backgroundColor: "#394B59" }}>
+        <InputGroup className={Classes.DARK} leftIcon="filter" placeholder="Find Properties..." large={true} fill={true} style={{ width: '100%' }} onChange={handleInputProperties}></InputGroup>
+        <Menu className={Classes.DARK} style={{ backgroundColor: "#394B59" }}>
           {
             menuItems.map((el) => {
               return (

@@ -5,7 +5,8 @@ import {
   Button,
   InputGroup,
   Icon,
-  Text
+  Text,
+  Tag
 } from "@blueprintjs/core";
 
 import { data } from './app/DATA'
@@ -25,6 +26,8 @@ function App() {
     setData(data.filter((el) => el.title.toLowerCase().includes(event.target.value.toLowerCase())))
   }
 
+  const resultAlerts = <Tag minimal={true}>{10000}</Tag>;
+
   return (
     <div className='App'>
       <div style={{ display: 'flex', height: '100%' }}>
@@ -38,7 +41,7 @@ function App() {
                 round
                 leftElement={<Icon icon="search" />}
                 placeholder="Search for Alerts..."
-                rightElement={<div style={{ backgroundColor: "#eeeeee", color: "#a8a8a8", fontSize: "12px", borderRadius: "10px", padding: "3px", marginTop: "4px", marginRight: "4px" }}> 100 </div>}
+                rightElement={resultAlerts}
                 onChange={filterTitle}
               />
             </div>
