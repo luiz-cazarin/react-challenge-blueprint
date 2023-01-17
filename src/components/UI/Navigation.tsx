@@ -10,7 +10,8 @@ import {
   Icon,
   Menu,
   MenuItem,
-  InputGroup
+  InputGroup,
+  Card,
 } from "@blueprintjs/core";
 
 export interface NavigationProps { }
@@ -31,10 +32,24 @@ export const Navigation: React.FC<NavigationProps> = () => {
   { text: "Messages" },]
 
   const [menuItems, setMenuItems] = useState(currMenuItems);
+  const [filteredStatus, setFilteredStatus] = useState(currMenuItems[0].children?.map((el) => el.text));
 
   const handleInputProperties = (value: { target: HTMLInputElement }) => {
     setMenuItems(currMenuItems.filter((el) => el.text.toLowerCase().includes(value.target.value.toLowerCase())))
   }
+
+  const setFilterStatus = (value: any) => {
+    let defaultList = currMenuItems[0].children?.map((el) => el.text);
+    let newValue = value.target.textContent;
+    if (filteredStatus?.find(el => el === newValue)) {
+      console.log(filteredStatus);
+    } else if (filteredStatus?.length === 0) {
+      setFilteredStatus(defaultList);
+    } else {
+      setFilteredStatus([newValue])
+    }
+  }
+
   return (
     <>
       <div style={{ backgroundColor: '#30404D', height: "100%" }}>
@@ -72,26 +87,39 @@ export const Navigation: React.FC<NavigationProps> = () => {
           {
             menuItems.map((el) => {
               return (
-                <MenuItem
-                  style={{ color: '#D5DCE2' }}
-                  text={el.text}
-                  children={
-                    el.children ? (
-                      <>
-                        {el.children?.map((children) => {
-                          return (
-                            <Button minimal text={children.text} />
-                          )
-                        })
-                        }
-                      </>
-                    ) : undefined
+                <>
+                  <MenuItem
+                    style={{ color: '#D5DCE2' }}
+                    text={el.text}
+                    children={
+                      el.children ? (
+                        <>
+                          {el.children?.map((children, index) => {
+                            return (
+                              <Button minimal text={children.text} onClick={setFilterStatus} />
+                            )
+                          })
+                          }
+                        </>
+                      ) : <div /> // just to make an arrow on the front end, not functional
+                    }
+                  />
+                  {el.children &&
+                    <Card className={Classes.DARK} style={{ minWidth: '300px', padding: '0px' }}>
+                      {filteredStatus?.map((el) => {
+                        return (
+                          <Button rightIcon="cross" text={el} style={{ margin: '.3rem' }} />
+                        )
+                      })}
+                    </Card>
                   }
-                />
+                </>
+
               )
             })
           }
         </Menu>
+
       </div>
     </>
   );
