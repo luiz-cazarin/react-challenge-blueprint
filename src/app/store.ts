@@ -1,15 +1,30 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore, createSlice, ThunkAction, Action } from '@reduxjs/toolkit';
 
-export const store = configureStore({
-  reducer: {
-  },
+const initialState = {
+  alerts: [
+    {
+      id: 0
+    }
+  ]
+}
+
+const alertsSlice = createSlice({
+  name: 'alerts',
+  initialState,
+  reducers: {
+    addAlert(state, action) {
+      state.alerts.push({id: 2})
+    },
+    removeAlert(state, action) {
+
+    }
+  }
 });
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+
+const store = configureStore({
+  reducer:  alertsSlice.reducer,
+});
+
+export const alertsActions = alertsSlice.actions;
+export default store;
