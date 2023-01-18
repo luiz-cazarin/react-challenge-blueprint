@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react'
 import { Navigation } from './components/UI/Navigation';
+import { alertsActions } from './app/store'
+
+
 import {
   Button,
   InputGroup,
@@ -26,7 +29,9 @@ function App() {
 
   const filterTitle = (event: { target: HTMLInputElement }) => {
     setData(data.filter((el) => el.title.toLowerCase().includes(event.target.value.toLowerCase())))
+    alertsActions.addAlert(5)
   }
+
 
   const resultAlerts = <Tag minimal={true}>{getData.length}</Tag>;
 

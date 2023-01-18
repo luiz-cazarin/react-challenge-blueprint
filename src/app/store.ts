@@ -1,11 +1,7 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-
+import { data } from './DATA'
 const initialState = {
-  alerts: [
-    {
-      id: 0
-    }
-  ]
+  alerts: data
 }
 
 const alertsSlice = createSlice({
@@ -13,7 +9,7 @@ const alertsSlice = createSlice({
   initialState,
   reducers: {
     addAlert(state, action) {
-      state.alerts.push({id: 2})
+      console.log('add');
     },
     removeAlert(state, action) {
 
@@ -23,7 +19,7 @@ const alertsSlice = createSlice({
 
 
 const store = configureStore({
-  reducer:  alertsSlice.reducer,
+  reducer: { alerts: alertsSlice.reducer },
 });
 
 export const alertsActions = alertsSlice.actions;

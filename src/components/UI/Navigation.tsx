@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { useSelector } from "react-redux";
 import {
   Alignment,
   AnchorButton,
@@ -15,11 +16,12 @@ import {
 } from "@blueprintjs/core";
 
 export const Navigation = ({ alerts }: any) => {
+  // const alerts2 = useSelector((state: any) => state.alerts);
 
   const currMenuItems = [{
     text: "Status",
     children: [
-      { text: "Close" },
+      { text: "Close", },
       { text: "Open" },
       { text: "Escalated" }
     ]
@@ -29,34 +31,31 @@ export const Navigation = ({ alerts }: any) => {
   { text: "History" },
   { text: "Favorites" },
   { text: "Messages" },]
-  const newAlerts = alerts.filter((el: any) => el.status.includes(["open closed"]));
-  console.log(newAlerts);
 
+  const childrenStatus = ["Close", "Open", "Escalated"]
 
-  const [menuItems, setMenuItems] = useState(currMenuItems);
-  const [filteredStatus, setFilteredStatus] = useState(currMenuItems[0].children?.map((el) => el.text));
+  const [menuProperties, setMenuProperties] = useState(currMenuItems);
+  const [filteredStatus, setFilteredStatus] = useState(childrenStatus);
 
   const handleInputProperties = (value: { target: HTMLInputElement }) => {
-    setMenuItems(currMenuItems.filter((el) => el.text.toLowerCase().includes(value.target.value.toLowerCase())))
+    setMenuProperties(currMenuItems.filter((el) => el.text.toLowerCase().includes(value.target.value.toLowerCase())))
   }
 
-  const setFilterStatus = (value: any) => {
-    let defaultList = currMenuItems[0].children?.map((el) => el.text);
+  const addFilterStatus = (value: any) => {
     let newValue = value.target.textContent;
+
     if (filteredStatus?.find(el => el === newValue)) {
       if (!filteredStatus.find(el => el === newValue)) {
         setFilteredStatus([...filteredStatus, newValue]);
       }
-    } else if (filteredStatus?.length === 0) {
-      setFilteredStatus(defaultList);
     } else {
-      setFilteredStatus([newValue]);
+      setFilteredStatus([...filteredStatus, newValue]);
     }
   }
 
   const removeFilterStatus = (value: any) => {
     if (value.target.textContent) setFilteredStatus(filteredStatus?.filter((el) => el !== value.target.textContent));
-    if (filteredStatus?.length === 1) setFilteredStatus(currMenuItems[0].children?.map((el) => el.text))
+    if (filteredStatus?.length === 1) setFilteredStatus(childrenStatus)
   }
 
   return (
@@ -94,7 +93,7 @@ export const Navigation = ({ alerts }: any) => {
         <InputGroup className={Classes.DARK} leftIcon="filter" placeholder="Find Properties..." large={true} fill={true} style={{ width: '100%' }} onChange={handleInputProperties}></InputGroup>
         <Menu className={Classes.DARK} style={{ backgroundColor: "#394B59" }}>
           {
-            menuItems.map((el, index) => {
+            menuProperties.map((el, index) => {
               return (
                 <>
                   <MenuItem
@@ -106,7 +105,7 @@ export const Navigation = ({ alerts }: any) => {
                         <>
                           {el.children?.map((children, index) => {
                             return (
-                              <Button key={index} minimal text={children.text} onClick={setFilterStatus} />
+                              <Button key={index} minimal text={children.text} onClick={addFilterStatus} />
                             )
                           })
                           }
@@ -124,7 +123,6 @@ export const Navigation = ({ alerts }: any) => {
                     </Card>
                   }
                 </>
-
               )
             })
           }
