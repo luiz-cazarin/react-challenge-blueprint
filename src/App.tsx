@@ -26,13 +26,13 @@ function App() {
     setData(data.filter((el) => el.title.toLowerCase().includes(event.target.value.toLowerCase())))
   }
 
-  const resultAlerts = <Tag minimal={true}>{10000}</Tag>;
+  const resultAlerts = <Tag minimal={true}>{getData.length}</Tag>;
 
   return (
     <div className='App'>
       <div style={{ display: 'flex', height: '100%' }}>
         <div style={{ height: '100%' }}>
-          <Navigation />
+          <Navigation alerts={getData} />
         </div>
         <div style={{ height: '100%', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', height: '50px', backgroundColor: '#EBF1F5' }}>

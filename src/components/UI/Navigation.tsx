@@ -14,9 +14,8 @@ import {
   Card,
 } from "@blueprintjs/core";
 
-export interface NavigationProps { }
+export const Navigation = ({ alerts }: any) => {
 
-export const Navigation: React.FC<NavigationProps> = () => {
   const currMenuItems = [{
     text: "Status",
     children: [
@@ -30,6 +29,9 @@ export const Navigation: React.FC<NavigationProps> = () => {
   { text: "History" },
   { text: "Favorites" },
   { text: "Messages" },]
+  const newAlerts = alerts.filter((el: any) => el.status.includes(["open closed"]));
+  console.log(newAlerts);
+
 
   const [menuItems, setMenuItems] = useState(currMenuItems);
   const [filteredStatus, setFilteredStatus] = useState(currMenuItems[0].children?.map((el) => el.text));
@@ -42,12 +44,19 @@ export const Navigation: React.FC<NavigationProps> = () => {
     let defaultList = currMenuItems[0].children?.map((el) => el.text);
     let newValue = value.target.textContent;
     if (filteredStatus?.find(el => el === newValue)) {
-      console.log(filteredStatus);
+      if (!filteredStatus.find(el => el === newValue)) {
+        setFilteredStatus([...filteredStatus, newValue]);
+      }
     } else if (filteredStatus?.length === 0) {
       setFilteredStatus(defaultList);
     } else {
-      setFilteredStatus([newValue])
+      setFilteredStatus([newValue]);
     }
+  }
+
+  const removeFilterStatus = (value: any) => {
+    if (value.target.textContent) setFilteredStatus(filteredStatus?.filter((el) => el !== value.target.textContent));
+    if (filteredStatus?.length === 1) setFilteredStatus(currMenuItems[0].children?.map((el) => el.text))
   }
 
   return (
@@ -85,10 +94,11 @@ export const Navigation: React.FC<NavigationProps> = () => {
         <InputGroup className={Classes.DARK} leftIcon="filter" placeholder="Find Properties..." large={true} fill={true} style={{ width: '100%' }} onChange={handleInputProperties}></InputGroup>
         <Menu className={Classes.DARK} style={{ backgroundColor: "#394B59" }}>
           {
-            menuItems.map((el) => {
+            menuItems.map((el, index) => {
               return (
                 <>
                   <MenuItem
+                    key={index}
                     style={{ color: '#D5DCE2' }}
                     text={el.text}
                     children={
@@ -96,7 +106,7 @@ export const Navigation: React.FC<NavigationProps> = () => {
                         <>
                           {el.children?.map((children, index) => {
                             return (
-                              <Button minimal text={children.text} onClick={setFilterStatus} />
+                              <Button key={index} minimal text={children.text} onClick={setFilterStatus} />
                             )
                           })
                           }
@@ -106,9 +116,9 @@ export const Navigation: React.FC<NavigationProps> = () => {
                   />
                   {el.children &&
                     <Card className={Classes.DARK} style={{ minWidth: '300px', padding: '0px' }}>
-                      {filteredStatus?.map((el) => {
+                      {filteredStatus?.map((el, index) => {
                         return (
-                          <Button rightIcon="cross" text={el} style={{ margin: '.3rem' }} />
+                          <Button key={index} rightIcon="cross" text={el} style={{ margin: '.3rem' }} onClick={removeFilterStatus} />
                         )
                       })}
                     </Card>
