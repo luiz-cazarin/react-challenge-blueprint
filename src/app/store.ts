@@ -1,4 +1,4 @@
-import { configureStore, createSlice, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   alerts: [
