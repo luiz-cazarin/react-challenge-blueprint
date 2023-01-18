@@ -127,7 +127,6 @@ export const Navigation = ({ alerts }: any) => {
             })
           }
         </Menu>
-
       </div>
     </>
   );
