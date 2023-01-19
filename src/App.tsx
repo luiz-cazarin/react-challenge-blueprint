@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { Navigation } from './components/UI/Navigation';
 import { Fragment } from 'react';
 
-import { data } from './app/DATA'
 import './App.css';
+import { data } from './app/DATA'
 import { HeaderPage } from './components/HeaderPage';
 import { TableAlerts } from './components/TableAlerts';
 

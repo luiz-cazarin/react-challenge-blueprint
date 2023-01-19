@@ -16,7 +16,7 @@ import {
 } from "@blueprintjs/core";
 
 export const Navigation = ({ handleTagProperties }: any) => {
-  // const alerts2 = useSelector((state: any) => state.alerts);
+  // const alerts = useSelector((state: any) => state.alerts);
 
   const currMenuItems = [{
     text: "Status",
