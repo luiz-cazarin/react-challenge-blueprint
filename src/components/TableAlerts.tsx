@@ -30,10 +30,10 @@ export const TableAlerts = ({ alerts }: any) => {
                 {
                     alerts.map((el: any, index: number) => {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td style={{ width: "300px" }}>{el.title}</td>
                                 <td style={{ width: "20px" }} >
-                                    <div style={{ height: "20px", textAlign: "center", width: "20px", borderRadius: "3px", backgroundColor: `${getDanger(el.danger)}` }}></div>
+                                    <div style={{ height: "40px", textAlign: "center", width: "20px", borderRadius: "3px", backgroundColor: `${getDanger(el.danger)}` }}></div>
                                 </td>
                                 <td style={{ width: "120px" }}>
                                     <div style={{ border: "1px solid rgb(209, 209, 209)", fontSize: "10px", textAlign: "center", padding: ".3rem 1rem", borderRadius: "5px" }}>

@@ -9,10 +9,8 @@ const alertsSlice = createSlice({
   initialState,
   reducers: {
     addAlert(state, action) {
-      console.log('add');
     },
     removeAlert(state, action) {
-
     }
   }
 });

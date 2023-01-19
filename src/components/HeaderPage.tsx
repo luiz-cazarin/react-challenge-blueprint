@@ -15,6 +15,7 @@ export const HeaderPage = ({ alerts, handleTitleAlerts }: any) => {
             <div style={{ display: 'flex', alignItems: 'center', height: '50px', backgroundColor: '#EBF1F5' }}>
                 <div style={{ paddingLeft: "20px" }}>
                     <InputGroup
+                        style={{ width: "300px" }}
                         round
                         leftElement={<Icon icon="search" />}
                         placeholder="Search for Alerts..."
@@ -23,11 +24,13 @@ export const HeaderPage = ({ alerts, handleTitleAlerts }: any) => {
                     />
                 </div>
                 <Button
+                    style={{ marginLeft: "20px" }}
                     minimal
                     icon="list"
                     text="List"
                 />
                 <Button
+                    style={{ marginLeft: "20px" }}
                     minimal
                     icon="grid-view"
                     text="Group by Trader"

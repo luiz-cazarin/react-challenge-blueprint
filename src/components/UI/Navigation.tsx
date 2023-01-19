@@ -58,6 +58,7 @@ export const Navigation = ({ handleTagProperties }: any) => {
 
   useEffect(() => {
     handleTagProperties(filteredStatus.map((el) => el.toLowerCase()));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredStatus])
 
   return (
