@@ -15,7 +15,7 @@ import {
   Card,
 } from "@blueprintjs/core";
 
-export const Navigation = ({ alerts, handleTagProperties }: any) => {
+export const Navigation = ({ handleTagProperties }: any) => {
   // const alerts2 = useSelector((state: any) => state.alerts);
 
   const currMenuItems = [{
@@ -44,14 +44,11 @@ export const Navigation = ({ alerts, handleTagProperties }: any) => {
 
   const addFilterStatus = (value: any) => {
     let newValue = value.target.textContent;
-
     if (filteredStatus?.find(el => el === newValue)) {
       if (!filteredStatus.find(el => el === newValue)) {
         setFilteredStatus([...filteredStatus, newValue]);
       }
-    } else {
-      setFilteredStatus([...filteredStatus, newValue]);
-    }
+    } else setFilteredStatus([...filteredStatus, newValue]);
   }
 
   const removeFilterStatus = (value: any) => {

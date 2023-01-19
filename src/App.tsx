@@ -10,27 +10,31 @@ import { TableAlerts } from './components/TableAlerts';
 
 function App() {
   const [getAlerts, setAlerts] = useState(data);
+  const [getFilteredByTags, setFilteredByTags] = useState(getAlerts);
+  const [getFilteredByTitle, setFilteredByTitle] = useState(getAlerts);
+
   const handleTitleAlerts = (target: any) => {
-    setAlerts(target);
+    setFilteredByTitle(target);
   }
 
   const handleTagProperties = (target: []) => {
-    let filters = target;
     let filteredArr = getAlerts.filter((alert) => {
       const tags = [alert.status];
-      return filters.some(f => tags.includes(f));
+      return target.some(f => tags.includes(f));
     });
-    console.log(filteredArr);
+    // setAlerts(filteredArr)
+    setFilteredByTags(filteredArr)
+    setFilteredByTitle(filteredArr)
   }
 
   return (
     <Fragment>
       <div className='App'>
         <div style={{ display: 'flex', height: '100%' }}>
-          <Navigation alerts={getAlerts} handleTagProperties={handleTagProperties} />
+          <Navigation handleTagProperties={handleTagProperties} />
           <div style={{ height: '100%', width: '100%' }}>
-            <HeaderPage alerts={getAlerts} handleTitleAlerts={handleTitleAlerts}></HeaderPage>
-            <TableAlerts alerts={getAlerts}></TableAlerts>
+            <HeaderPage alerts={getFilteredByTags} handleTitleAlerts={handleTitleAlerts}></HeaderPage>
+            <TableAlerts alerts={getFilteredByTitle}></TableAlerts>
           </div>
         </div>
       </div >

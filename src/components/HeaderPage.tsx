@@ -1,9 +1,12 @@
 // import { useSelector } from "react-redux";
 import { InputGroup, Button, Icon, Tag } from "@blueprintjs/core";
-import { data } from '../app/DATA'
+import { useEffect, useState } from "react";
+
 export const HeaderPage = ({ alerts, handleTitleAlerts }: any) => {
+
     const filterByTitle = (event: { target: HTMLInputElement }) => {
-        handleTitleAlerts(data.filter((el) => el.title.toLowerCase().includes(event.target.value.toLowerCase())));
+        const data = alerts.filter((el: any) => el.title.toLowerCase().includes(event.target.value.toLowerCase()));
+        handleTitleAlerts(data);
     }
 
     const resultAlerts = <Tag minimal={true}>{alerts.length}</Tag>;
