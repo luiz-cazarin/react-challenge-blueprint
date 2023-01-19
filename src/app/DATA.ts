@@ -11,7 +11,7 @@ export const data = [
     },
     {
         id: 2,
-        title: "Sell of $34.0M",
+        title: "Sell of $32.3M",
         danger: 1,
         status: "escalated",
         trader: "Hugo justice",
@@ -21,7 +21,7 @@ export const data = [
     },
     {
         id: 3,
-        title: "Sell of $34.0M",
+        title: "Sell of $35.0M",
         danger: 1,
         status: "closed",
         trader: "Hugo justice",
@@ -31,9 +31,9 @@ export const data = [
     },
     {
         id: 4,
-        title: "Sell of $34.0M",
+        title: "Sell of $340.0M",
         danger: 0,
-        status: "closed",
+        status: "open",
         trader: "Hugo justice",
         couterParty: "VALE corp 4",
         book: "phhi-z53",
@@ -41,7 +41,7 @@ export const data = [
     },
     {
         id: 5,
-        title: "Sell of $33.0M",
+        title: "Sell of $13.0M",
         danger: 0,
         status: "closed",
         trader: "Hugo justice",
@@ -51,7 +51,7 @@ export const data = [
     },
     {
         id: 6,
-        title: "Sell of $34.0M",
+        title: "Sell of $38.0M",
         danger: 1,
         status: "closed",
         trader: "Hugo justice",
@@ -61,7 +61,7 @@ export const data = [
     },
     {
         id: 7,
-        title: "Sell of $35.0M",
+        title: "Sell of $323.0M",
         danger: 0,
         status: "closed",
         trader: "Hugo justice",
@@ -71,7 +71,7 @@ export const data = [
     },
     {
         id: 8,
-        title: "Sell of $24.0M",
+        title: "Sell of $240.0M",
         danger: 2,
         status: "closed",
         trader: "Hugo justice",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { useSelector } from "react-redux";
 import {
   Alignment,
@@ -15,13 +15,13 @@ import {
   Card,
 } from "@blueprintjs/core";
 
-export const Navigation = ({ alerts }: any) => {
+export const Navigation = ({ alerts, handleTagProperties }: any) => {
   // const alerts2 = useSelector((state: any) => state.alerts);
 
   const currMenuItems = [{
     text: "Status",
     children: [
-      { text: "Close", },
+      { text: "Closed", },
       { text: "Open" },
       { text: "Escalated" }
     ]
@@ -32,13 +32,14 @@ export const Navigation = ({ alerts }: any) => {
   { text: "Favorites" },
   { text: "Messages" },]
 
-  const childrenStatus = ["Close", "Open", "Escalated"]
+  const childrenStatus = ["Closed", "Open", "Escalated"]
 
   const [menuProperties, setMenuProperties] = useState(currMenuItems);
   const [filteredStatus, setFilteredStatus] = useState(childrenStatus);
 
   const handleInputProperties = (value: { target: HTMLInputElement }) => {
     setMenuProperties(currMenuItems.filter((el) => el.text.toLowerCase().includes(value.target.value.toLowerCase())))
+
   }
 
   const addFilterStatus = (value: any) => {
@@ -57,6 +58,10 @@ export const Navigation = ({ alerts }: any) => {
     if (value.target.textContent) setFilteredStatus(filteredStatus?.filter((el) => el !== value.target.textContent));
     if (filteredStatus?.length === 1) setFilteredStatus(childrenStatus)
   }
+
+  useEffect(() => {
+    handleTagProperties(filteredStatus.map((el) => el.toLowerCase()));
+  }, [filteredStatus])
 
   return (
     <>
