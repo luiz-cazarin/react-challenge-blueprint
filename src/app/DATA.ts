@@ -1,7 +1,7 @@
 export const data = [
     {
         id: 1,
-        title: "Buy of $34,00",
+        title: "Buy of $34,00 LOPR on 1/28/13",
         danger: 2,
         status: "open",
         trader: "Hugo justice",
@@ -11,7 +11,7 @@ export const data = [
     },
     {
         id: 2,
-        title: "Sell of $32.3M",
+        title: "Sell of $32.3M ERCD International on 1/30/1",
         danger: 1,
         status: "escalated",
         trader: "Hugo justice",
@@ -51,7 +51,7 @@ export const data = [
     },
     {
         id: 6,
-        title: "Sell of $38.0M",
+        title: "Sell of $38.0M 10/29/11",
         danger: 1,
         status: "closed",
         trader: "Hugo justice",
@@ -71,9 +71,29 @@ export const data = [
     },
     {
         id: 8,
-        title: "Sell of $240.0M",
+        title: "Sell of $240.0M 11/35/11",
         danger: 2,
         status: "closed",
+        trader: "Hugo justice",
+        couterParty: "VALE corp 8",
+        book: "phhi-z53",
+        source: "Bank Thrading",
+    },
+    {
+        id: 9,
+        title: "BUY of $240.0M USD/aud WITH Brown Banking on 1/32/10",
+        danger: 2,
+        status: "closed",
+        trader: "Hugo justice",
+        couterParty: "VALE corp 8",
+        book: "phhi-z53",
+        source: "Bank Thrading",
+    },
+    {
+        id: 10,
+        title: "BUY of $2.400.0M USD/aud WITH Brown Banking on 10/30/11",
+        danger: 1,
+        status: "open",
         trader: "Hugo justice",
         couterParty: "VALE corp 8",
         book: "phhi-z53",

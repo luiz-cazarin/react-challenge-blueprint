@@ -12,47 +12,43 @@ const getDanger = (level: number) => {
 // import { useSelector } from "react-redux";
 export const TableAlerts = ({ alerts }: any) => {
     return (
-        <>
-            <div style={{ padding: ".2rem", width: "100%" }}>
-                <table className='table'>
-                    <thead className='header__row'>
-                        <tr>
-                            <th><Text>TITLE</Text></th>
-                            <th style={{ textAlign: "center" }}>
-                                <Button className='bp4-intent-primary' icon="issue" minimal></Button>
-                            </th>
-                            <th><Text>STATUS</Text></th>
-                            <th><Text>TRADER</Text></th>
-                            <th><Text>COUNTERPARTY</Text></th>
-                            <th><Text>BOOK</Text></th>
-                            <th><Text>SOURCE</Text></th>
-                        </tr>
-                    </thead>
-                    <tbody className='body'>
-                        {
-                            alerts.map((el: any, index: number) => {
-                                return (
-                                    <tr>
-                                        <td style={{ width: "300px" }}>{el.title}</td>
-                                        <td style={{ width: "20px" }} >
-                                            <div style={{ height: "20px", textAlign: "center", width: "20px", borderRadius: "3px", backgroundColor: `${getDanger(el.danger)}` }}></div>
-                                        </td>
-                                        <td style={{ width: "120px" }}>
-                                            <div style={{ border: "1px solid rgb(209, 209, 209)", fontSize: "10px", textAlign: "center", padding: ".3rem 1rem", borderRadius: "5px" }}>
-                                                {el.status.toUpperCase()}
-                                            </div>
-                                        </td>
-                                        <td>{el.trader}</td>
-                                        <td>{el.couterParty}</td>
-                                        <td>{el.book}</td>
-                                        <td>{el.source}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </>
+        <table className='table'>
+            <thead className='header__row'>
+                <tr>
+                    <th><Text>TITLE</Text></th>
+                    <th style={{ textAlign: "center" }}>
+                        <Button className='bp4-intent-primary' icon="issue" minimal></Button>
+                    </th>
+                    <th><Text>STATUS</Text></th>
+                    <th><Text>TRADER</Text></th>
+                    <th><Text>COUNTERPARTY</Text></th>
+                    <th><Text>BOOK</Text></th>
+                    <th><Text>SOURCE</Text></th>
+                </tr>
+            </thead>
+            <tbody className='body'>
+                {
+                    alerts.map((el: any, index: number) => {
+                        return (
+                            <tr>
+                                <td style={{ width: "300px" }}>{el.title}</td>
+                                <td style={{ width: "20px" }} >
+                                    <div style={{ height: "20px", textAlign: "center", width: "20px", borderRadius: "3px", backgroundColor: `${getDanger(el.danger)}` }}></div>
+                                </td>
+                                <td style={{ width: "120px" }}>
+                                    <div style={{ border: "1px solid rgb(209, 209, 209)", fontSize: "10px", textAlign: "center", padding: ".3rem 1rem", borderRadius: "5px" }}>
+                                        {el.status.toUpperCase()}
+                                    </div>
+                                </td>
+                                <td>{el.trader}</td>
+                                <td>{el.couterParty}</td>
+                                <td>{el.book}</td>
+                                <td>{el.source}</td>
+                            </tr>
+                        )
+                    })
+                }
+            </tbody>
+        </table>
     );
 };

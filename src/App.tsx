@@ -9,7 +9,7 @@ import { HeaderPage } from './components/HeaderPage';
 import { TableAlerts } from './components/TableAlerts';
 
 function App() {
-  const [getAlerts, setAlerts] = useState(data);
+  const [getAlerts] = useState(data); // get...
   const [getFilteredByTags, setFilteredByTags] = useState(getAlerts);
   const [getFilteredByTitle, setFilteredByTitle] = useState(getAlerts);
 
@@ -22,7 +22,6 @@ function App() {
       const tags = [alert.status];
       return target.some(f => tags.includes(f));
     });
-    // setAlerts(filteredArr)
     setFilteredByTags(filteredArr)
     setFilteredByTitle(filteredArr)
   }

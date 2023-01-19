@@ -1,6 +1,5 @@
 // import { useSelector } from "react-redux";
 import { InputGroup, Button, Icon, Tag } from "@blueprintjs/core";
-import { useEffect, useState } from "react";
 
 export const HeaderPage = ({ alerts, handleTitleAlerts }: any) => {
 
