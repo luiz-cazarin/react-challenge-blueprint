@@ -1,6 +1,8 @@
 # React challenge - Blueprint
 
 This project was developed in React with the Blueprint, Typescript and Redux
+<br/>
+We can use multiple filters, tags and text on the same data
 ### Use `npm install` to install dependencies
 ### Use `npm start` or `npm run dev` to run the project
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
